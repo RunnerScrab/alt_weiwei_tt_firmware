@@ -133,7 +133,7 @@ void Display_LastLine(void)
   Line = UI.CharPos_Y;             /* get current line number */
 
   /* check if we reached the last line */
-  if (Line == UI.CharMax_Y)         
+  if (Line == UI.CharMax_Y)
   {
     WaitKey();                     /* wait for key press */
     LCD_ClearLine(Line);           /* clear last line */
@@ -223,7 +223,7 @@ void Display_EEString(const unsigned char *String)
  *  requires:
  *  - probe/testpin ID (0-2)
  */
- 
+
 void Display_ProbeNumber(uint8_t Probe)
 {
   #ifdef UI_PROBE_COLORS
@@ -718,7 +718,7 @@ void Display_Value(uint32_t Value, int8_t Exponent, unsigned char Unit)
     Value += 5;                       /* for automagic rounding */
     Value = Value / 10;               /* scale down by 10^1 */
     Exponent++;                       /* increase exponent by 1 */
-  } 
+  }
 
 
   /*
@@ -733,9 +733,9 @@ void Display_Value(uint32_t Value, int8_t Exponent, unsigned char Unit)
 
     if (Offset > 0)                     /* dot required */
     {
-      Index++;                          /* upscale prefix */ 
+      Index++;                          /* upscale prefix */
       Offset = 3 - Offset;              /* reverse value (1 or 2) */
-    }    
+    }
 
     /* look up prefix in table */
     if (Index < NUM_PREFIXES)           /* prevent array overflow */
@@ -776,7 +776,7 @@ void Display_Value(uint32_t Value, int8_t Exponent, unsigned char Unit)
     Exponent = -1;                 /* disable dot */
   }
 
-  /* adjust position to match array or disable dot if set to 0 */ 
+  /* adjust position to match array or disable dot if set to 0 */
   Exponent--;
 
   /* display value and add dot if requested */
@@ -857,7 +857,7 @@ void Display_EValue(uint16_t Value, int8_t Scale, unsigned char Unit)
    *  0.15M (150k looks much nicer).
    */
 
-  if ((Offset == 1) && (Value < 100))      /* 0.01u and 0.11u */  
+  if ((Offset == 1) && (Value < 100))      /* 0.01u and 0.11u */
   {
     /* scale value to lower 10^3 step */
     Value *= 10;              /* *10 */
@@ -897,7 +897,7 @@ void Display_EIA96(uint8_t Index, int8_t Scale)
   /*
    *  value code (index number of value)
    *  - 2 digits
-   *  - prepend 0 for single digit number 
+   *  - prepend 0 for single digit number
    */
 
   if (Index < 10)                  /* single digit */
@@ -1011,7 +1011,7 @@ void LCD_FancySemiPinout(uint8_t Line)
   uint8_t           Pos;           /* position of symbol */
   uint8_t           MaxLine;       /* maximum line number */
   #ifdef LCD_COLOR
-  uint16_t          Color;         /* pen color */ 
+  uint16_t          Color;         /* pen color */
   #endif
 
   Pos = UI.SymbolSize_Y;           /* get symbol height */
@@ -1028,20 +1028,20 @@ void LCD_FancySemiPinout(uint8_t Line)
     Pos += Line;                   /* line below symbol */
 
     /* check for narrow displays */
-    if (UI.CharMax_X < 16)         /* less than 16 chars per line */
-    {
-      Pos = MaxLine;               /* trigger output on new screen */
-    }
+    //if (UI.CharMax_X < 16)         /* less than 16 chars per line */
+    //{
+    //  Pos = MaxLine;               /* trigger output on new screen */
+    //}
 
-    if (Pos >= MaxLine)       /* doesn't fit on current screen */
-    {
+    //if (Pos >= MaxLine)       /* doesn't fit on current screen */
+    //{
       /* output on a new screen */
-      UI.CharPos_Y = MaxLine;      /* simulate last line */
-      Display_NextLine();          /* trigger test key & clear screen */
-      Line = 2;                    /* simply line #2 */
-      Pos = 3;                     /* align to left side with tiny offset */
-    }
-    else                      /* fits on current screen */
+    //  UI.CharPos_Y = MaxLine;      /* simulate last line */
+    //  Display_NextLine();          /* trigger test key & clear screen */
+    //  Line = 2;                    /* simply line #2 */
+    //  Pos = 3;                     /* align to left side with tiny offset */
+    // }
+    //else                      /* fits on current screen */
     {
       /* default x position */
       Pos = UI.CharMax_X - UI.SymbolSize_X;  /* align to right side */
@@ -1098,12 +1098,12 @@ void ChangeContrast(void)
   uint8_t          Flag = 1;            /* loop control */
   uint8_t          Contrast;            /* contrast value */
   uint8_t          Max;                 /* contrast maximum */
-  
+
 
   /*
-   *  increase: short key press / right turn 
+   *  increase: short key press / right turn
    *  decrease: long key press / left turn
-   *  done:     two brief key presses          
+   *  done:     two brief key presses
    */
 
   LCD_Clear();
@@ -1220,7 +1220,7 @@ void FontTest(void)
       }
       else                    /* some space left */
       {
-        Run++;                /* another line */ 
+        Run++;                /* another line */
       }
     }
 

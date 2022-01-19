@@ -54,7 +54,7 @@
  *  - this is used by the detection of the rotary encoder's turning velocity
  *  - it doesn't have to match exactly and also allows you to finetune the
  *    the feedback (higher: slow down, lower: speed up)
- *  - typical values: 20, 24 or 30 
+ *  - typical values: 20, 24 or 30
  *  - adjust value to match your rotary encoder
  */
 
@@ -118,15 +118,15 @@
 
 /*
  *  non-standard voltage divider for Zener check
- *  - standard voltage divider is 10:1 
+ *  - standard voltage divider is 10:1
  *  - ZENER_R1: top resistor in Ohms
  *  - ZENER_R2: bottom resistor in Ohms
  *  - uncomment to enable and adjust resistor values
  */
 
 //#define ZENER_DIVIDER_CUSTOM
-#define ZENER_R1         180000
-#define ZENER_R2         20000
+//#define ZENER_R1         180000
+//#define ZENER_R2         20000
 
 
 /*
@@ -149,8 +149,8 @@
  */
 
 //#define HW_PROBE_ZENER
-#define ZENER_VOLTAGE_MIN     1000      /* min. voltage in mV */
-#define ZENER_VOLTAGE_MAX     30000     /* max. voltage in mV */
+//#define ZENER_VOLTAGE_MIN     1000      /* min. voltage in mV */
+//#define ZENER_VOLTAGE_MAX     30000     /* max. voltage in mV */
 
 
 /*
@@ -197,11 +197,11 @@
  *  - uses T0 directly as counter input
  *  - uncomment to enable
  *  - select the pulse output: either dedicated pin or probes
- *  - see RINGTESTER_PORT in config-<MCU>.h for dedicated pin 
+ *  - see RINGTESTER_PORT in config-<MCU>.h for dedicated pin
  */
 
 //#define HW_RING_TESTER
-#define RING_TESTER_PIN                 /* dedicated pin */
+//#define RING_TESTER_PIN                 /* dedicated pin */
 //#define RING_TESTER_PROBES              /* probes */
 
 
@@ -265,12 +265,12 @@
  *  - should be around 1000pF
  */
 
-#define LC_METER_C_REF        10000
+//#define LC_METER_C_REF        10000
 
 
 /*
  *  L/C meter: also display frequency of LC oscillator
- *  - helps to spot the oscillator's frequency drifting 
+ *  - helps to spot the oscillator's frequency drifting
  *  - requires display with more than two text lines
  *  - uncomment to enable
  */
@@ -298,8 +298,8 @@
  */
 
 //#define HW_LOGIC_PROBE
-#define LOGIC_PROBE_R1        10000
-#define LOGIC_PROBE_R2        3300
+//#define LOGIC_PROBE_R1        10000
+//#define LOGIC_PROBE_R2        3300
 
 
 /*
@@ -418,7 +418,7 @@
  *  - uncomment to enable
  */
 
-#define SW_IR_RECEIVER
+//#define SW_IR_RECEIVER
 
 
 /*
@@ -483,7 +483,7 @@
  *  - uncomment to enable
  */
 
-#define SW_UJT
+//#define SW_UJT
 
 
 /*
@@ -491,7 +491,7 @@
  *  - uncomment to enable
  */
 
-#define SW_SCHOTTKY_BJT
+//#define SW_SCHOTTKY_BJT
 
 
 /*
@@ -505,7 +505,7 @@
 
 
 /*
- *  DS18B20 - OneWire temperature sensor 
+ *  DS18B20 - OneWire temperature sensor
  *  - uncomment to enable
  *  - also enable ONEWIRE_PROBES or ONEWIRE_IO_PIN (see section 'Busses')
  */
@@ -658,7 +658,7 @@
 
 
 /* ************************************************************************
- *   workarounds for some IDEs 
+ *   workarounds for some IDEs
  * ************************************************************************ */
 
 
@@ -793,7 +793,7 @@
  *  Control tester via TTL serial interface.
  *  - uncomment to enable
  *  - also enable SERIAL_BITBANG or SERIAL_HARDWARE, plus SERIAL_RW
- *    (see section 'Busses') 
+ *    (see section 'Busses')
  */
 
 //#define UI_SERIAL_COMMANDS
@@ -805,7 +805,7 @@
  *  - Time between printing the result and starting a new probing cycle.
  */
 
-#define CYCLE_DELAY      3000
+#define CYCLE_DELAY      0
 
 
 /*
@@ -818,7 +818,7 @@
  *    until it's powered off manually.
  */
 
-#define CYCLE_MAX        5
+#define CYCLE_MAX        255
 
 
 /*
@@ -847,7 +847,7 @@
  *  - edit colors.h to select correct probe colors
  *    (COLOR_PROBE_1, COLOR_PROBE_2 and COLOR_PROBE_3)
  */
-
+#define SW_PROBE_COLORS
 #define UI_PROBE_COLORS
 
 
@@ -858,7 +858,7 @@
  *  - uncomment to enable
  */
 
-//#define UI_COLORED_TITLES
+#define UI_COLORED_TITLES
 
 
 /*
@@ -868,7 +868,7 @@
  *  - uncomment to enable
  */
 
-//#define UI_COLORED_CURSOR
+#define UI_COLORED_CURSOR
 
 
 /*
@@ -902,7 +902,7 @@
  *  - self-adjustment data is always stored in EEPROM
  *  - fonts and symbols are always stored in Flash
  *  - uncomment one
- */ 
+ */
 
 #define DATA_EEPROM           /* store data in EEPROM */
 //#define DATA_FLASH            /* store data in Flash */
@@ -917,7 +917,7 @@
 /*
  *  type of power switch
  *  - soft-latching power switch (default)
- *    - as in the tester's reference circuit 
+ *    - as in the tester's reference circuit
  *    - tester is able to power itself off
  *  - manual power switch
  *    - tester isn't able to power itself off
@@ -961,8 +961,8 @@
  *  - standard values are: R1=10k, R2=3.3k
  */
 
-#define BAT_R1           10000
-#define BAT_R2           3300
+#define BAT_R1           33000
+#define BAT_R2           33000
 
 
 /*
@@ -971,7 +971,7 @@
  *  - or any other circuitry in the power section
  *  - Get your DMM and measure the voltage drop!
  *  - Schottky diode about 200mV / PNP BJT about 100mV.
- */  
+ */
 
 #define BAT_OFFSET       290
 
@@ -991,7 +991,7 @@
  *  - Voltage drop BAT_OFFSET is considered in calculation.
  */
 
-#define BAT_LOW          6400 
+#define BAT_LOW          6400
 
 
 /*
@@ -1009,7 +1009,7 @@
 
 
 /*
- *  ADC voltage reference based on Vcc (in mV). 
+ *  ADC voltage reference based on Vcc (in mV).
  */
 
 #define UREF_VCC         5001
@@ -1040,7 +1040,7 @@
 
 
 /*
- *  Offset for systematic error of resistor measurement with Rh (470k) 
+ *  Offset for systematic error of resistor measurement with Rh (470k)
  *  in Ohms.
  *  - if resistors >20k measure too high or low adjust the offset accordingly
  *  - standard offset is 350 Ohms
@@ -1069,7 +1069,7 @@
 //#define R_MULTIOFFSET
 
 
-/* 
+/*
  *  Capacitance of probes (in pF).
  *  - default offset for MCU, PCB tracks and probe leads
  *  - Examples:
@@ -1111,7 +1111,7 @@
  *  - CAP_FACTOR_LARGE for caps > 47µF
  */
 
-#define CAP_FACTOR_SMALL      0      /* no correction */ 
+#define CAP_FACTOR_SMALL      0      /* no correction */
 #define CAP_FACTOR_MID        -40    /* -4.0% */
 #define CAP_FACTOR_LARGE      -90    /* -9.0% */
 
@@ -1281,7 +1281,7 @@
 
 
 /*
- *  ADC clock 
+ *  ADC clock
  *  - The ADC clock is 125000Hz by default.
  *  - You could also set 250000Hz, but that exceeds the max. ADC clock
  *    of 200kHz for 10 bit resolution!
@@ -1305,7 +1305,7 @@
 
 /* 1MHz/250kHz */
 #if CPU_FREQ / ADC_FREQ == 4
-  #define ADC_CLOCK_DIV (1 << ADPS1) 
+  #define ADC_CLOCK_DIV (1 << ADPS1)
 #endif
 
 /* 1MHz/125kHz 2MHz/250kHz */
@@ -1353,7 +1353,7 @@
  *  number of MCU cycles per ADC cycle
  *  - min. 4
  *  - max. 128
- */ 
+ */
 
 #define MCU_CYCLES_PER_ADC    (CPU_FREQ / ADC_FREQ)
 
@@ -1422,7 +1422,7 @@
   /* PWM+ */
   #ifdef SW_PWM_PLUS
     #undef SW_PWM_PLUS
-    #define SW_PWM_SIMPLE   
+    #define SW_PWM_SIMPLE
   #endif
 
   /* squarewave generator */
@@ -1564,7 +1564,7 @@
   #endif
   #ifdef UI_SERIAL_COMMANDS
     #undef UI_SERIAL_COMMANDS
-  #endif  
+  #endif
 #endif
 
 /* options which require TTL serial */

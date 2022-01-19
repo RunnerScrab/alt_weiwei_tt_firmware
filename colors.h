@@ -377,7 +377,7 @@
 #define COLOR_BACKGROUND      COLOR_BLACK
 
 /* standard pen color */
-#define COLOR_PEN             COLOR_GREEN
+#define COLOR_PEN             COLOR_WHITE
 
 /* titles */
 #define COLOR_TITLE           COLOR_YELLOW
@@ -398,12 +398,12 @@
 #define COLOR_MARKER          COLOR_YELLOW
 
 /* symbols */
-#define COLOR_SYMBOL          COLOR_YELLOW
+#define COLOR_SYMBOL          COLOR_CYAN
 
 /* color codes for probe pins */
-#define COLOR_PROBE_1         COLOR_YELLOW
+#define COLOR_PROBE_1         COLOR_RED
 #define COLOR_PROBE_2         COLOR_GREEN
-#define COLOR_PROBE_3         COLOR_RED
+#define COLOR_PROBE_3         COLOR_BLUE
 
 /* battery status */
 #define COLOR_BAT_OK          COLOR_GREEN

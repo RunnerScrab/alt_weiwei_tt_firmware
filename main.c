@@ -95,7 +95,7 @@ void Show_SemiPinout(uint8_t A, uint8_t B, uint8_t C)
 
 /*
  *  show simple pinout
- *  - displays: 1:a 2:b 3:c 
+ *  - displays: 1:a 2:b 3:c
  *
  *  required:
  *  - ID: characters for probes 1, 2 and 3
@@ -478,7 +478,7 @@ void Show_SingleResistor(uint8_t ID1, uint8_t ID2)
   /* show pinout */
   Display_Char(ID1);
   Display_EEString(Resistor_str);
-  Display_Char(ID2); 
+  Display_Char(ID2);
 
   /* show resistance value */
   Display_Space();
@@ -515,7 +515,7 @@ void Show_Resistor(void)
 
     if (Check.Resistors == 3)      /* three resistors */
     {
-      Resistor_Type     *Rmax;     /* pointer to largest resistor */    
+      Resistor_Type     *Rmax;     /* pointer to largest resistor */
 
       /*
        *  3 resistors mean 2 single resistors and both resistors in series.
@@ -740,7 +740,7 @@ void Show_Capacitor(void)
   MaxCap = &Caps[0];               /* pointer to first cap */
   Cap = MaxCap;
 
-  for (Counter = 1; Counter <= 2; Counter++) 
+  for (Counter = 1; Counter <= 2; Counter++)
   {
     Cap++;                         /* next cap */
 
@@ -824,7 +824,7 @@ void Show_Capacitor(void)
  *  show current (leakage or whatever) of semiconductor
  *
  *  Mapping for Semi structure:
- *  - I_value - current 
+ *  - I_value - current
  *  - I_scale - scale for current (10^x)
  */
 
@@ -1105,7 +1105,7 @@ void Show_Diode(void)
    *  display capacitance in next line
    */
 
-  if (CapFlag == 1)                     /* if feasable */ 
+  if (CapFlag == 1)                     /* if feasable */
   {
     Display_NL_EEString_Space(DiodeCap_str);   /* display: C */
 
@@ -1263,7 +1263,7 @@ void Show_BJT(void)
 
 
   /*
-   *  display B-E resistor in next line if detected 
+   *  display B-E resistor in next line if detected
    */
 
   /* check for B-E resistor below 25kOhms */
@@ -1363,7 +1363,7 @@ void Show_BJT(void)
       /*
        *  BJTs with low hFE are power transistors and need a large I_b
        *  to drive the load. So we simply take Vf of the high test current
-       *  measurement (7mA). 
+       *  measurement (7mA).
        */
 
       V_BE = Diode->V_f;
@@ -1450,7 +1450,7 @@ void Show_BJT(void)
 
 void Show_FET_Extras(void)
 {
-  Diode_Type        *Diode;        /* pointer to diode */  
+  Diode_Type        *Diode;        /* pointer to diode */
   uint8_t           Anode;         /* anode of diode */
   uint8_t           Cathode;       /* cathode of diode */
   uint8_t           Char_1;        /* pin name */
@@ -1638,7 +1638,7 @@ void Show_FET(void)
 
   /* display channel type */
   Show_FET_Channel();
-      
+
   /* display mode for MOSFETs*/
   if (Check.Type & TYPE_MOSFET) Show_FET_Mode();
 
@@ -1694,7 +1694,7 @@ void Show_FET(void)
 
 
 /*
- *  show IGBT  
+ *  show IGBT
  */
 
 void Show_IGBT(void)
@@ -1852,12 +1852,12 @@ void Show_UJT(void)
     Display_EEString(UJT_str);          /* display: UJT */
   #endif
 
-  /* display pinout in line #2 */  
+  /* display pinout in line #2 */
   Display_NextLine();                   /* next line (#2) */
   Show_SemiPinout('E', '2', '1');       /* display pinout */
 
   /* display r_BB in line #3 */
-  Display_NL_EEString_Space(R_BB_str);  /* display: R_BB */  
+  Display_NL_EEString_Space(R_BB_str);  /* display: R_BB */
   Display_Value(Resistors[0].Value, Resistors[0].Scale, LCD_CHAR_OMEGA);
 }
 
@@ -1888,7 +1888,7 @@ void Show_Zener(void)
     Display_EEString(Zener_str);        /* display: Zener */
   #endif
 
-  /* display voltage in line #2 */  
+  /* display voltage in line #2 */
   Display_NextLine();                   /* next line (#2) */
   Display_Value(Semi.U_1, -3, 'V');     /* display voltage */
 }
@@ -2075,7 +2075,7 @@ void CheckBattery(void)
 
   /*
    *  ADC pin is connected to a voltage divider (top: R1 / bottom: R2).
-   *  - U2 = (Uin / (R1 + R2)) * R2 
+   *  - U2 = (Uin / (R1 + R2)) * R2
    *  - Uin = (U2 * (R1 + R2)) / R2
    */
 
@@ -2155,7 +2155,7 @@ int main(void)
   ADC_DDR = (1 << TP_REF);              /* disable relay */
   #endif
 
-  /* catch watchdog */  
+  /* catch watchdog */
   Test = (MCUSR & (1 << WDRF));         /* save watchdog flag */
   MCUSR &= ~(1 << WDRF);                /* reset watchdog flag */
   wdt_disable();                        /* disable watchdog */
@@ -2373,6 +2373,13 @@ int main(void)
   Display_EEString(Tester_str);         /* display: Component Tester */
   Display_NL_EEString(Version_str);     /* display firmware version */
 
+  #ifdef LCD_COLOR
+  UI.PenColor = COLOR_ERROR;          /* set pen color */
+  #endif
+
+  Display_NL_EEString(kmeow1_str);
+  Display_NL_EEString(kmeow2_str);
+
   #ifdef SW_DISPLAY_ID
   /* show ID of display controller */
   Display_Space();                      /* display space */
@@ -2387,7 +2394,7 @@ int main(void)
   UI.PenColor = COLOR_PEN;              /* set pen color */
   #endif
 
-  MilliSleep(1500);                     /* let the user read the display */
+  MilliSleep(1000);                     /* let the user read the display */
 
 
   /*
@@ -2479,7 +2486,7 @@ cycle_start:
   UI.KeyStepOld = 1;               /* step size 1 */
   #endif
   #ifdef SW_SYMBOLS
-  UI.SymbolLine = 3;               /* default: line #3 */
+  UI.SymbolLine = UI.CharMax_Y - UI.SymbolSize_Y;               /* default: line #3 */
   #endif
 
   /* reset hardware */
@@ -2567,7 +2574,7 @@ cycle_start:
 
     /* tell user to be patient with large caps :) */
     Display_Space();
-    Display_Char('C');    
+    Display_Char('C');
 
     /* check all possible combinations */
     MeasureCap(PROBE_3, PROBE_1, 0);
@@ -2695,7 +2702,7 @@ show_component:
     Display_EEString_NL(Cmd_OK_str);    /* send: OK & newline */
     Display_LCD_Only();                 /* switch output back to display */
 
-    /* We don't have to restore the next-line mode since it will be 
+    /* We don't have to restore the next-line mode since it will be
        changed a few line below anyway. */
   }
   #endif

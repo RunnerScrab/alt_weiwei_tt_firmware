@@ -21,8 +21,10 @@
 
 
   /* firmware */
-  const unsigned char Tester_str[] MEM_TYPE = "Component Tester";
+  const unsigned char Tester_str[] MEM_TYPE = "Comp Tester";
 
+  const unsigned char kmeow1_str[] MEM_TYPE = "Device utterly";
+  const unsigned char kmeow2_str[] MEM_TYPE = "f***ed by kmeow";
 
   /* common terms and texts */
   const unsigned char Probing_str[] MEM_TYPE = "Probing...";
